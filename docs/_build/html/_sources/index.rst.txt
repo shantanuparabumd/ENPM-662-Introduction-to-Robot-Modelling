@@ -10,11 +10,24 @@ Welcome to ENPM 662: Introduction to Robot Modelling's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   install
+   support
 
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. Indices and tables
+.. ==================
+
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
+
+Title
+=====
+
+Section
+-------
+
+Subsection
+
+You can use ``backticks`` for showing ``highlighted`` code.
