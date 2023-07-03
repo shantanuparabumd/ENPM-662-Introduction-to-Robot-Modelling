@@ -5,6 +5,7 @@ Create Package
 ---------------------------------------------------------------
 
 To create a new package head to your workspace (ros2_ws). Then move to src folder .
+
 .. code-block:: bash
 
 
@@ -12,6 +13,7 @@ To create a new package head to your workspace (ros2_ws). Then move to src folde
 
 
 Run the below code line by changing `my_package` with the name of package you want to create.
+
 .. code-block:: bash
 
 

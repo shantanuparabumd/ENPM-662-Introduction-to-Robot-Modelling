@@ -91,16 +91,14 @@
 <h1>Create a Package in ROS 2<a class="headerlink" href="#create-a-package-in-ros-2" title="Permalink to this heading"></a></h1>
 <section id="create-package">
 <h2>Create Package<a class="headerlink" href="#create-package" title="Permalink to this heading"></a></h2>
-<p>To create a new package head to your workspace (ros2_ws). Then move to src folder .
-.. code-block:: bash</p>
-<blockquote>
-<div><p>cd ~/ros2_ws/src</p>
-</div></blockquote>
-<p>Run the below code line by changing <cite>my_package</cite> with the name of package you want to create.
-.. code-block:: bash</p>
-<blockquote>
-<div><p>ros2 pkg create –build-type ament_cmake  my_package</p>
-</div></blockquote>
+<p>To create a new package head to your workspace (ros2_ws). Then move to src folder .</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src
+</pre></div>
+</div>
+<p>Run the below code line by changing <cite>my_package</cite> with the name of package you want to create.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>pkg<span class="w"> </span>create<span class="w"> </span>--build-type<span class="w"> </span>ament_cmake<span class="w">  </span>my_package
+</pre></div>
+</div>
 <p>Example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>pkg<span class="w"> </span>create<span class="w"> </span>--build-type<span class="w"> </span>ament_cmake<span class="w">  </span>car
 </pre></div>

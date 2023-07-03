@@ -54,6 +54,11 @@
 <li class="toctree-l1"><a class="reference internal" href="package_creation.html">Create a Package in ROS 2</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Add URDF to Package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#download-urdf">Download URDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#launch-files">Launch files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cmakelists">CMakeLists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#package-xml">Package xml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-color">Adding Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#launch-model">Launch Model</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="add_control.html">Controllers</a></li>
@@ -167,6 +172,197 @@ After performing the above step your ROS2 package should look like follows.</p>
 </pre></div>
 </div>
 <p>We will be adding more directories later to make our robot spawn and add controllers.</p>
+</section>
+<section id="launch-files">
+<h2>Launch files<a class="headerlink" href="#launch-files" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/test_ws/src/package-name/
+
+<span class="c1"># Example</span>
+<span class="nb">cd</span><span class="w"> </span>~/test_ws/src/car/
+</pre></div>
+</div>
+<p>Inorder to launch our robot model we need launch files that activate the following things.</p>
+<ul class="simple">
+<li><p>Gazebo Server</p></li>
+<li><p>Gazebo Client</p></li>
+<li><p>Spawn Entity</p></li>
+<li><p>Start the State Publisher</p></li>
+</ul>
+<p>We will be downloading a few templates for ease.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>svn<span class="w"> </span><span class="nb">export</span><span class="w"> </span>https://github.com/shantanuparabumd/ENPM-662-Introduction-to-Robot-Modelling.git/trunk/templates/launch
+</pre></div>
+</div>
+<p>We also need a empty world to spawn our robot in so we will download the world files.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>svn<span class="w"> </span><span class="nb">export</span><span class="w"> </span>https://github.com/shantanuparabumd/ENPM-662-Introduction-to-Robot-Modelling.git/trunk/templates/worlds
+</pre></div>
+</div>
+<p>Your current package structure should look like follows.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>├──<span class="w"> </span>CMakeLists.txt
+├──<span class="w"> </span>include
+│<span class="w">   </span>└──<span class="w"> </span>car
+├──<span class="w"> </span>launch
+│<span class="w">   </span>├──<span class="w"> </span>robot_description_publisher.py
+│<span class="w">   </span>├──<span class="w"> </span>robot.launch.py
+│<span class="w">   </span>└──<span class="w"> </span>spawn_robot_ros2.launch.py
+├──<span class="w"> </span>meshes
+│<span class="w">   </span>├──<span class="w"> </span>back_left_axel.STL
+│<span class="w">   </span>├──<span class="w"> </span>back_left_lidar.STL
+│<span class="w">   </span>├──<span class="w"> </span>back_left_wheel.STL
+│<span class="w">   </span>├──<span class="w"> </span>back_right_axel.STL
+│<span class="w">   </span>├──<span class="w"> </span>back_right_lidar.STL
+│<span class="w">   </span>├──<span class="w"> </span>back_right_wheel.STL
+│<span class="w">   </span>├──<span class="w"> </span>back.STL
+│<span class="w">   </span>├──<span class="w"> </span>base_link.STL
+│<span class="w">   </span>├──<span class="w"> </span>front_left_axel.STL
+│<span class="w">   </span>├──<span class="w"> </span>front_left_lidar.STL
+│<span class="w">   </span>├──<span class="w"> </span>front_left_wheel.STL
+│<span class="w">   </span>├──<span class="w"> </span>front_right_axel.STL
+│<span class="w">   </span>├──<span class="w"> </span>front_right_lidar.STL
+│<span class="w">   </span>├──<span class="w"> </span>front_right_wheel.STL
+│<span class="w">   </span>├──<span class="w"> </span>front.STL
+│<span class="w">   </span>├──<span class="w"> </span>left.STL
+│<span class="w">   </span>├──<span class="w"> </span>right.STL
+│<span class="w">   </span>└──<span class="w"> </span>top.STL
+├──<span class="w"> </span>package.xml
+├──<span class="w"> </span>src
+├──<span class="w"> </span>urdf
+│<span class="w">   </span>├──<span class="w"> </span>car.csv
+│<span class="w">   </span>└──<span class="w"> </span>car.urdf
+└──<span class="w"> </span>worlds
+<span class="w">    </span>└──<span class="w"> </span>empty_world.world
+</pre></div>
+</div>
+</section>
+<section id="cmakelists">
+<h2>CMakeLists<a class="headerlink" href="#cmakelists" title="Permalink to this heading"></a></h2>
+<p>We have to make a few cahnages to the CMakeLists</p>
+<p>Do not forget the add these folders to CMakeLists</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">install</span><span class="p">(</span><span class="s">DIRECTORY</span>
+<span class="w">    </span><span class="s">urdf</span>
+<span class="w">    </span><span class="s">meshes</span>
+<span class="w">    </span><span class="s">launch</span>
+<span class="w">    </span><span class="s">worlds</span>
+<span class="w">    </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">share/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="s">/</span>
+<span class="w">    </span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Add include DIRECTORY</p>
+<blockquote>
+<div><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">install</span><span class="p">(</span>
+<span class="w">    </span><span class="s">DIRECTORY</span><span class="w"> </span><span class="s">include/car</span>
+<span class="w">    </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">include</span>
+<span class="w">    </span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Add python files as executables</p>
+<blockquote>
+<div><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">install</span><span class="p">(</span>
+<span class="w">    </span><span class="s">PROGRAMS</span>
+<span class="w">    </span><span class="s">launch/robot_description_publisher.py</span>
+<span class="w">    </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">lib/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span>
+<span class="w">    </span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Add dependencies</p>
+<blockquote>
+<div><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">robot_state_publisher</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">xacro</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">tf2</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">tf2_ros</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="package-xml">
+<h2>Package xml<a class="headerlink" href="#package-xml" title="Permalink to this heading"></a></h2>
+<p>A few more changes have to be made to package.xml file</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;buildtool_depend&gt;</span>ament_cmake<span class="nt">&lt;/buildtool_depend&gt;</span>
+
+<span class="nt">&lt;build_depend&gt;</span>rosidl_default_generators<span class="nt">&lt;/build_depend&gt;</span>
+
+<span class="nt">&lt;build_depend&gt;</span>xacro<span class="nt">&lt;/build_depend&gt;</span>
+
+<span class="nt">&lt;depend&gt;</span>gazebo_ros_pkgs<span class="nt">&lt;/depend&gt;</span>
+<span class="nt">&lt;depend&gt;</span>robot_state_publisher<span class="nt">&lt;/depend&gt;</span>
+<span class="nt">&lt;depend&gt;</span>tf2<span class="nt">&lt;/depend&gt;</span>
+<span class="nt">&lt;depend&gt;</span>tf2_ros<span class="nt">&lt;/depend&gt;</span>
+
+
+<span class="nt">&lt;test_depend&gt;</span>ament_lint_auto<span class="nt">&lt;/test_depend&gt;</span>
+<span class="nt">&lt;test_depend&gt;</span>ament_lint_common<span class="nt">&lt;/test_depend&gt;</span>
+<span class="nt">&lt;test_depend&gt;</span>ament_cmake_gtest<span class="nt">&lt;/test_depend&gt;</span>
+
+<span class="nt">&lt;export&gt;</span>
+<span class="w">    </span><span class="nt">&lt;build_type&gt;</span>ament_cmake<span class="nt">&lt;/build_type&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gazebo_ros</span><span class="w"> </span><span class="na">gazebo_model_path=</span><span class="s">&quot;${prefix}/..&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/export&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-color">
+<h2>Adding Color<a class="headerlink" href="#adding-color" title="Permalink to this heading"></a></h2>
+<p>We can make use of the OGRE color format to make the colors visible in Gazebo</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xacro:macro</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;body_color&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">    </span><span class="nt">&lt;material&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ambient&gt;</span>0.250980392156863<span class="w"> </span>0.250980392156863<span class="w"> </span>0.250980392156863<span class="w"> </span>1<span class="nt">&lt;/ambient&gt;</span>
+<span class="w">        </span><span class="nt">&lt;diffuse&gt;</span>0.250980392156863<span class="w"> </span>0.250980392156863<span class="w"> </span>0.250980392156863<span class="w"> </span>1<span class="nt">&lt;/diffuse&gt;</span>
+<span class="w">        </span><span class="nt">&lt;specular&gt;</span>0.1<span class="w"> </span>0.1<span class="w"> </span>0.1<span class="w"> </span>1<span class="nt">&lt;/specular&gt;</span>
+<span class="w">        </span><span class="nt">&lt;emissive&gt;</span>0<span class="w"> </span>0<span class="w"> </span>0<span class="w"> </span>0<span class="nt">&lt;/emissive&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/material&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="nt">&lt;/xacro:macro&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gazebo</span><span class="w"> </span><span class="na">reference=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xacro:body_color</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/gazebo&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="launch-model">
+<h2>Launch Model<a class="headerlink" href="#launch-model" title="Permalink to this heading"></a></h2>
+<p>Now we need to edit the launch files to fit to our package. Find the following lines and change it to your package name</p>
+<p>File Name: <cite>robot.launch.py</cite></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">world</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;car&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;worlds&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;empty_world.world&#39;</span>
+<span class="p">)</span>
+
+<span class="n">package_path</span> <span class="o">=</span> <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;car&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>File Name: <cite>spawn_robot_ros2.launch.py</cite></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">####### DATA INPUT ##########</span>
+<span class="n">xacro_file</span> <span class="o">=</span> <span class="s2">&quot;car.urdf.xacro&quot;</span>
+<span class="c1">#xacro_file = &quot;box_bot.xacro&quot;</span>
+<span class="n">package_description</span> <span class="o">=</span> <span class="s2">&quot;car&quot;</span>
+<span class="c1"># Position and orientation</span>
+<span class="c1"># [X, Y, Z]</span>
+<span class="n">position</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="c1"># [Roll, Pitch, Yaw]</span>
+<span class="n">orientation</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+<span class="c1"># Base Name or robot</span>
+<span class="n">robot_base_name</span> <span class="o">=</span> <span class="s2">&quot;car&quot;</span>
+<span class="c1"># Package Name</span>
+<span class="n">pkg_name</span><span class="o">=</span><span class="s1">&#39;car&#39;</span>
+<span class="c1">####### DATA INPUT END ##########</span>
+</pre></div>
+</div>
+<p>Once All the changes are done.
+Build Your Package and Source Overlay</p>
+<p>Launch your robot using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>launch<span class="w"> </span>car<span class="w"> </span>robot.launch.py
+</pre></div>
+</div>
 </section>
 </section>
 

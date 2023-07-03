@@ -135,6 +135,7 @@ Your current package structure should look like follows.
 
 
 .. code-block:: bash
+    
     ├── CMakeLists.txt
     ├── include
     │   └── car
@@ -182,6 +183,7 @@ We have to make a few cahnages to the CMakeLists
 Do not forget the add these folders to CMakeLists
 
 .. code-block:: cmake
+
     install(DIRECTORY
         urdf
         meshes
@@ -193,6 +195,7 @@ Do not forget the add these folders to CMakeLists
 * Add include DIRECTORY
 
     .. code-block:: cmake
+
         install(
             DIRECTORY include/car
             DESTINATION include
@@ -202,6 +205,7 @@ Do not forget the add these folders to CMakeLists
 * Add python files as executables
 
     .. code-block:: cmake
+
         install(
             PROGRAMS
             launch/robot_description_publisher.py
@@ -211,6 +215,7 @@ Do not forget the add these folders to CMakeLists
 * Add dependencies
 
     .. code-block:: cmake
+
         find_package(robot_state_publisher REQUIRED)
         find_package(xacro REQUIRED)
         find_package(tf2 REQUIRED)
