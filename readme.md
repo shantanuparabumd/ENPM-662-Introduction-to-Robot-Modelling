@@ -1,19 +1,3 @@
-# Install Ubuntu
+# ENPM 662: Introduction to Robot Modelling
 
-# Install ROS2
-
-# Setup Environment
-
-# Setup Workspace
-
-# Create Package
-
-# Add URDF to Package
-
-# Add launch file to spawn your robot
-
-# Add controller to robot
-
-# Write a script to control the robot
-
-https://github.com/shantanuparabumd/ENPM-662-Introduction-to-Robot-Modelling/trunk/car/launch
+[Walkthrough Documentation](https://enpm-662introduction-to-robot-modelling.readthedocs.io/en/latest/)
