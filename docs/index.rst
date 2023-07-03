@@ -12,8 +12,10 @@ Welcome to ENPM 662: Introduction to Robot Modelling's documentation!
 
    install
    support
-
-
+   install_ros2
+   install_ubuntu
+   env_setup
+   package_creation
 
 .. Indices and tables
 .. ==================
