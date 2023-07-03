@@ -10,15 +10,11 @@ Project 1 Documentation
    :maxdepth: 2
    :caption: Contents:
 
-   install_ubuntu
-   install_ros2
-   env_setup
+  
    workspace
    package_creation
    add_urdf
    add_control
-   script
-   install
    support
    
 
