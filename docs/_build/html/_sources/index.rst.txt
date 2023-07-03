@@ -31,3 +31,32 @@ Section
 Subsection
 
 You can use ``backticks`` for showing ``highlighted`` code.
+
+
+.. highlight:: bash
+   :linenothreshold: 1
+
+A cool bit of code::
+
+   #!/bin/bash
+   # Some cool Bash code
+   echo ${BASH_VERSINFO[*]}
+   ros2 pkg create --build-type ament_cmake <package_name>
+
+
+.. code-block:: xml
+
+
+   <joint
+    name="front_right_lidar_joint"
+    type="fixed">
+    <origin
+      xyz="2.1064 -1.1064 1.92"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_right_lidar" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
