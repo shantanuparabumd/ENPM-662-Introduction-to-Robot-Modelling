@@ -87,7 +87,7 @@ After performing the above step your ROS2 package should look like follows.
 To make sure these folders are visible to your build package you also need to change the CMakeLists as follows.
 
 .. code-block:: cmake
-    
+
     install(DIRECTORY
     urdf
     meshes
@@ -95,5 +95,8 @@ To make sure these folders are visible to your build package you also need to ch
     )
 
 We will be adding more directories later to make our robot spawn and add controllers.
+
+Launch files
+-----------------------------------------------------------------------------------
 
 
