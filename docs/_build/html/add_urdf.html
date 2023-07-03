@@ -158,6 +158,15 @@ After performing the above step your ROS2 package should look like follows.</p>
 <span class="w">    </span>└──<span class="w"> </span>car.urdf
 </pre></div>
 </div>
+<p>To make sure these folders are visible to your build package you also need to change the CMakeLists as follows.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">install</span><span class="p">(</span><span class="s">DIRECTORY</span>
+<span class="s">urdf</span>
+<span class="s">meshes</span>
+<span class="s">DESTINATION</span><span class="w"> </span><span class="s">share/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="s">/</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>We will be adding more directories later to make our robot spawn and add controllers.</p>
 </section>
 </section>
 
