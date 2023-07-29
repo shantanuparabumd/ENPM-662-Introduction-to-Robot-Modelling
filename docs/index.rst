@@ -10,7 +10,7 @@ Project 1 Documentation
    :maxdepth: 2
    :caption: Contents:
 
-  
+   install_ubuntu
    workspace
    package_creation
    add_urdf
