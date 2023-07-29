@@ -7,7 +7,7 @@ check for the below tag
     <build_type>ament_cmake</build_type>
   </export>
 
-2 Model is loaded but not visible in gGazebo
+2 Model is loaded but not visible in Gazebo
 
 Solution: Head to the package.xml file
 Add the below tag
