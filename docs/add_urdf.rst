@@ -10,7 +10,7 @@ Once you have create a URDF using Solidworks you will get a package which is com
 .. note::
     Make sure the name of the package from Solidworks Exporter is same as the package you created in ROS2. This will make it easy to deal with further changes.
 
-    You will get a folder with a similar structure
+You will get a folder with a similar structure
 
 .. code-block:: bash
 
@@ -99,12 +99,7 @@ We will be adding more directories later to make our robot spawn and add control
 Launch files
 -----------------------------------------------------------------------------------
 
-.. code-block:: bash
 
-    cd ~/test_ws/src/package-name/
-
-    # Example
-    cd ~/test_ws/src/car/
 
 Inorder to launch our robot model we need launch files that activate the following things.
 
@@ -117,6 +112,15 @@ Inorder to launch our robot model we need launch files that activate the followi
 * Start the State Publisher
 
 We will be downloading a few templates for ease.
+
+We move to the root of our package and then run the code below to download the templates.
+
+.. code-block:: bash
+
+    cd ~/test_ws/src/package-name/
+
+    # Example
+    cd ~/test_ws/src/car/
 
 .. code-block:: bash
 
