@@ -18,8 +18,8 @@ Project 1 Documentation
    add_urdf
    add_control
    script
-   support
    faq
+   support
    
 
 .. Indices and tables

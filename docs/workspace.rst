@@ -1,7 +1,7 @@
 Workspace Setup
 =====================================================================
 
-use the following to setup your  workspace
+Use the following to setup your  workspace
 
 Inorder to setup a workspace you first need to source your ROS2 environment.
 

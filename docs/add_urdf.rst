@@ -5,7 +5,7 @@ Add URDF to Package
 Download URDF
 -----------------------------------------------------------
 
-Once you have create a URDF using Solidworks you will get a package which is compatible with ROS1. However to make it work with ROS2 we will need to make some changes.
+Once you have created a URDF using Solidworks you will get a package which is compatible with ROS1. However to make it work with ROS2 we will need to make some changes.
 
 .. note::
     Make sure the name of the package from Solidworks Exporter is same as the package you created in ROS2. This will make it easy to deal with further changes.
@@ -17,7 +17,7 @@ You will get a folder with a similar structure
 
     ├── CMakeLists.txt
     ├── config
-    │   └── joint_names_car.yaml
+    │   └── joint_names_test_package.yaml
     ├── export.log
     ├── launch
     │   ├── display.launch
@@ -44,8 +44,8 @@ You will get a folder with a similar structure
     ├── package.xml
     ├── textures
     └── urdf
-        ├── car.csv
-        └── car.urdf
+        ├── test_package.csv
+        └── test_package.urdf
 
 
 Now you need to move the folders meshes and urdf to your ROS2 package.
@@ -55,7 +55,7 @@ After performing the above step your ROS2 package should look like follows.
 
     ├── CMakeLists.txt
     ├── include
-    │   └── car
+    │   └── test_package
     ├── meshes
     │   ├── back_left_axel.STL
     │   ├── back_left_lidar.STL
@@ -78,8 +78,8 @@ After performing the above step your ROS2 package should look like follows.
     ├── package.xml
     ├── src
     └── urdf
-        ├── car.csv
-        └── car.urdf
+        ├── test_package.csv
+        └── test_package.urdf
 
 
 
@@ -120,7 +120,7 @@ We move to the root of our package and then run the code below to download the t
     cd ~/test_ws/src/package-name/
 
     # Example
-    cd ~/test_ws/src/car/
+    cd ~/test_ws/src/test_package/
 
 .. code-block:: bash
 
@@ -142,7 +142,7 @@ Your current package structure should look like follows.
     
     ├── CMakeLists.txt
     ├── include
-    │   └── car
+    │   └── test_package
     ├── launch
     │   ├── robot_description_publisher.py
     │   ├── robot.launch.py
@@ -169,8 +169,8 @@ Your current package structure should look like follows.
     ├── package.xml
     ├── src
     ├── urdf
-    │   ├── car.csv
-    │   └── car.urdf
+    │   ├── test_package.csv
+    │   └── test_package.urdf
     └── worlds
         └── empty_world.world
 
@@ -178,15 +178,11 @@ Your current package structure should look like follows.
 CMakeLists
 --------------------------------------------------------------------
 
-We have to make a few cahnages to the CMakeLists
+We have to make a few changes to the CMakeLists
 
-
-
-
-
-Do not forget the add these folders to CMakeLists
 
 .. code-block:: cmake
+    :emphasize-lines: 4,5
 
     install(DIRECTORY
         urdf
@@ -201,7 +197,7 @@ Do not forget the add these folders to CMakeLists
     .. code-block:: cmake
 
         install(
-            DIRECTORY include/car
+            DIRECTORY include/test_package
             DESTINATION include
             )
 
@@ -290,12 +286,12 @@ File Name: `robot.launch.py`
 .. code-block:: python
 
      world = os.path.join(
-        get_package_share_directory('car'),
+        get_package_share_directory('test_package'),
         'worlds',
         'empty_world.world'
     )
 
-    package_path = get_package_share_directory('car')
+    package_path = get_package_share_directory('test_package')
 
 
 File Name: `spawn_robot_ros2.launch.py`
@@ -303,18 +299,18 @@ File Name: `spawn_robot_ros2.launch.py`
 .. code-block:: python
 
     ####### DATA INPUT ##########
-    xacro_file = "car.urdf.xacro"
+    xacro_file = "test_package.urdf.xacro"
     #xacro_file = "box_bot.xacro"
-    package_description = "car"
+    package_description = "test_package"
     # Position and orientation
     # [X, Y, Z]
     position = [0.0, 0.0, 0.5]
     # [Roll, Pitch, Yaw]
     orientation = [0.0, 0.0, 0.0]
     # Base Name or robot
-    robot_base_name = "car"
+    robot_base_name = "test_package"
     # Package Name
-    pkg_name='car'
+    pkg_name='test_package'
     ####### DATA INPUT END ##########
 
 Once All the changes are done.
@@ -325,4 +321,4 @@ Launch your robot using
 
 .. code-block:: bash
 
-    ros2 launch car robot.launch.py
+    ros2 launch test_package robot.launch.py
