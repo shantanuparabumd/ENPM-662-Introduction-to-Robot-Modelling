@@ -11,11 +11,15 @@ Project 1 Documentation
    :caption: Contents:
 
    install_ubuntu
+   install_ros2
+   solidworks
    workspace
    package_creation
    add_urdf
    add_control
+   script
    support
+   faq
    
 
 .. Indices and tables
