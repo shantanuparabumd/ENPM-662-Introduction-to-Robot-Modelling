@@ -8,9 +8,9 @@ Download URDF
 Once you have create a URDF using Solidworks you will get a package which is compatible with ROS1. However to make it work with ROS2 we will need to make some changes.
 
 .. note::
-Make sure the name of the package from Solidworks Exporter is same as the package you created in ROS2. This will make it easy to deal with further changes.
+    Make sure the name of the package from Solidworks Exporter is same as the package you created in ROS2. This will make it easy to deal with further changes.
 
-You will get a folder with a similar structure
+    You will get a folder with a similar structure
 
 .. code-block:: bash
 
