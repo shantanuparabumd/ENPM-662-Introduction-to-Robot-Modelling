@@ -68,7 +68,7 @@ You also need to add Gazebo Plugin for the Controller
 
         <gazebo>
             <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-                <parameters>$(find car)/config/control.yaml</parameters>
+                <parameters>$(find test_package)/config/control.yaml</parameters>
             </plugin>
         </gazebo>
 

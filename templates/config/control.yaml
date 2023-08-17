@@ -29,7 +29,7 @@ joint_position_controller:
       - velocity
 
 
-velocity_controller:
+joint_velocity_controller:
   ros__parameters:
     joints:
       - back_right_wheel_joint

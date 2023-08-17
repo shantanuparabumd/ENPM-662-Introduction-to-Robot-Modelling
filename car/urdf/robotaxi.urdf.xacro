@@ -72,6 +72,10 @@
   </xacro:macro>
 
 
+  <link name="dummy_link">
+    </link>
+    
+    
   <link
     name="base_link">
     <inertial>
@@ -112,6 +116,13 @@
       </geometry>
     </collision>
   </link>
+
+  <joint name="dummy_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="dummy_link"/>
+        <child link="base_link"/>
+  </joint>
+
   <link
     name="front_right_axel">
     <inertial>
@@ -197,7 +208,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -308,7 +319,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -419,7 +430,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -530,7 +541,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -583,7 +594,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0.501960784313725 1 0.501960784313725 1" />
       </material>
     </visual>
     <collision>
@@ -636,7 +647,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0.501960784313725 1 0.501960784313725 1" />
       </material>
     </visual>
     <collision>
@@ -689,7 +700,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0.501960784313725 1 0.501960784313725 1" />
       </material>
     </visual>
     <collision>
@@ -742,7 +753,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0.501960784313725 1 0.501960784313725 1" />
       </material>
     </visual>
     <collision>
@@ -795,7 +806,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0 0.752941176470588 0 1" />
       </material>
     </visual>
     <collision>
@@ -848,7 +859,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -901,7 +912,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -954,7 +965,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -1007,7 +1018,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -1174,5 +1185,150 @@
         <parameters>$(find project_legion)/config/control.yaml</parameters>
       </plugin>
   </gazebo>
+
+  <gazebo reference="front_left_lidar">
+  <sensor name="lidar" type="ray">
+    <pose>0 0 0 0 0 0</pose>
+    <always_on>true</always_on>
+    <visualize>true</visualize>
+    <update_rate>5</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>360</samples>
+          <resolution>1.00000</resolution>
+          <min_angle>0.000000</min_angle>
+          <max_angle>6.280000</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.120000</min>
+        <max>3.5</max>
+        <resolution>0.015000</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+    <plugin name="scan_1" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <remapping>~/out:=scan_1</remapping>
+      </ros>
+      <output_type>sensor_msgs/LaserScan</output_type>
+      <frame_name>front_left_lidar</frame_name>
+    </plugin>
+  </sensor>
+  </gazebo>
+
+  <gazebo reference="back_right_lidar">
+  <sensor name="lidar" type="ray">
+    <pose>0 0 0 0 0 0</pose>
+    <always_on>true</always_on>
+    <visualize>true</visualize>
+    <update_rate>5</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>360</samples>
+          <resolution>1.00000</resolution>
+          <min_angle>0.000000</min_angle>
+          <max_angle>6.280000</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.120000</min>
+        <max>3.5</max>
+        <resolution>0.015000</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+    <plugin name="scan_2" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <remapping>~/out:=scan_2</remapping>
+      </ros>
+      <output_type>sensor_msgs/LaserScan</output_type>
+      <frame_name>back_right_lidar</frame_name>
+    </plugin>
+  </sensor>
+  </gazebo>
+
+  <gazebo reference="back_left_lidar">
+  <sensor name="lidar" type="ray">
+    <pose>0 0 0 0 0 0</pose>
+    <always_on>true</always_on>
+    <visualize>true</visualize>
+    <update_rate>5</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>360</samples>
+          <resolution>1.00000</resolution>
+          <min_angle>0.000000</min_angle>
+          <max_angle>6.280000</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.120000</min>
+        <max>3.5</max>
+        <resolution>0.015000</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+    <plugin name="scan_3" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <remapping>~/out:=scan_3</remapping>
+      </ros>
+      <output_type>sensor_msgs/LaserScan</output_type>
+      <frame_name>back_left_lidar</frame_name>
+    </plugin>
+  </sensor>
+  </gazebo>
+
+  <gazebo reference="front_right_lidar">
+  <sensor name="lidar" type="ray">
+    <pose>0 0 0 0 0 0</pose>
+    <always_on>true</always_on>
+    <visualize>true</visualize>
+    <update_rate>5</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>360</samples>
+          <resolution>1.00000</resolution>
+          <min_angle>0.000000</min_angle>
+          <max_angle>6.280000</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.120000</min>
+        <max>3.5</max>
+        <resolution>0.015000</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+    <plugin name="scan_4" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <remapping>~/out:=scan_4</remapping>
+      </ros>
+      <output_type>sensor_msgs/LaserScan</output_type>
+      <frame_name>front_right_lidar</frame_name>
+    </plugin>
+  </sensor>
+  </gazebo>
+  
   
 </robot>

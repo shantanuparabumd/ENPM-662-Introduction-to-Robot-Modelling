@@ -17,6 +17,7 @@ Project 1 Documentation
    package_creation
    add_urdf
    add_control
+   rviz
    script
    faq
    support
