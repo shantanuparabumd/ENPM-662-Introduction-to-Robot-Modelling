@@ -18,6 +18,7 @@ Project 1 Documentation
    add_urdf
    add_control
    rviz
+   plugin
    script
    faq
    support
