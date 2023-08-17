@@ -51,4 +51,4 @@ We will add the below code to our URDF file.
 
 .. image:: images/Add.png
   :width: 400
-  :alt: Alternative text
+  :alt: Add Laser Topic
