@@ -46,9 +46,25 @@ We will add the below code to our URDF file.
   </sensor>
   </gazebo>
 
-  Build your project and use the Launch script to start RVIZ 2.
 
+Build your project and use the Launch script to start RVIZ 2.
+
+Click on the Add button on the bottom left corner of the screen.
 
 .. image:: images/Add.png
-  :width: 400
+  :width: 700
+  :alt: Add Laser Topic
+
+
+Select the LaserScan topic from the list.
+
+.. image:: images/laser_topic.png
+  :width: 700
+  :alt: Add Laser Topic
+
+Use the following configurations for Laser Scanner to work. You can make changes once you are comfortable.
+Make sure you change the topic name to the topic of your laser scanner.
+
+.. image:: images/rviz_laser_config.png
+  :width: 700
   :alt: Add Laser Topic
