@@ -145,7 +145,7 @@ Your current package structure should look like follows.
     │   └── test_package
     ├── launch
     │   ├── robot_description_publisher.py
-    │   ├── robot.launch.py
+    │   ├── gazebo.launch.py
     │   └── spawn_robot_ros2.launch.py
     ├── meshes
     │   ├── back_left_axel.STL
@@ -281,7 +281,7 @@ Launch Model
 
 Now we need to edit the launch files to fit to our package. Find the following lines and change it to your package name
 
-File Name: `robot.launch.py`
+File Name: `gazebo.launch.py`
 
 .. code-block:: python
 
@@ -316,9 +316,16 @@ File Name: `spawn_robot_ros2.launch.py`
 Once All the changes are done.
 Build Your Package and Source Overlay
 
+If you find dependencies missing while building the package. You can install them using.
+.. code-block:: bash
+    sudo apt install ros-galactic-package-name
+e.g.
+.. code-block:: bash
+    sudo apt install ros-galactic-xacro
+
 
 Launch your robot using
 
 .. code-block:: bash
 
-    ros2 launch test_package robot.launch.py
+    ros2 launch test_package gazebo.launch.py
