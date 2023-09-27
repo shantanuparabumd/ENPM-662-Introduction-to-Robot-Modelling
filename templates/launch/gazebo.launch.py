@@ -16,7 +16,7 @@ def generate_launch_description():
 
     # Get the location for empty world
     world = os.path.join(
-        get_package_share_directory('project_legion'),
+        get_package_share_directory('package_name'),
         'worlds',
         'empty_world.world'
     )
@@ -37,7 +37,7 @@ def generate_launch_description():
     )
 
     # Get the package directory 
-    pkg_robotaxi_gazebo = get_package_share_directory('project_legion')
+    pkg_robotaxi_gazebo = get_package_share_directory('package_name')
 
    
 
