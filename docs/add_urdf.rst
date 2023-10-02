@@ -317,9 +317,12 @@ Once All the changes are done.
 Build Your Package and Source Overlay
 
 If you find dependencies missing while building the package. You can install them using.
+
 .. code-block:: bash
     sudo apt install ros-galactic-package-name
+
 e.g.
+
 .. code-block:: bash
     sudo apt install ros-galactic-xacro
 

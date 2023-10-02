@@ -164,3 +164,12 @@ To publish the data to the joints use the following commands
 
     ros2 topic pub /position_controller/commands std_msgs/msg/Float64MultiArray "{data: [0.3,0.3,0.3,0.3],layout: {dim:[], data_offset: 1"}}
 
+
+Let's add the controllers spawner into our launch files. To do this you can just import the revised tempplate for the launch folder in the root
+of your package using.
+
+
+.. code-block:: bash
+
+    svn export https://github.com/shantanuparabumd/ENPM-662-Introduction-to-Robot-Modelling.git/trunk/templates/template3/launch
+
