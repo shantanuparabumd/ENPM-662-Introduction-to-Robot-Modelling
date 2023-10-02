@@ -96,6 +96,32 @@ To make sure these folders are visible to your build package you also need to ch
 
 We will be adding more directories later to make our robot spawn and add controllers.
 
+Update URDF file
+-------------------------------------------------------------------------------------
+
+The name of your URDF file at this point will be :guilabel:`robot_name.urdf`. Rename it to :guilabel:`robot_name.urdf.xacro`
+The xacro extension will help us to use xacro formating in our model.
+
+Now open your :guilabel:`robot_name.urdf.xacro` and remove the :guilabel:`encoding="utf-8"` part from the xml tag.
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="utf-8"?>
+
+Your tag should look like below after update
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="utf-8"?>
+
+You will also need to add the :guilabel:`xmlns:xacro="http://ros.org/wiki/xacro`` argument to your robot tag.
+
+.. code-block::xml
+
+    <robot name="robot_name" xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+
 Launch files
 -----------------------------------------------------------------------------------
 
@@ -275,6 +301,7 @@ We can make use of the OGRE color format to make the colors visible in Gazebo
     <gazebo reference="base_link">
         <xacro:body_color />
     </gazebo>
+
 
 Launch Model
 ------------------------------------------------
