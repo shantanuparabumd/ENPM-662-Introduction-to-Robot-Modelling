@@ -94,44 +94,6 @@ def generate_launch_description():
     )
 
 
-    # Joint State Broadcaster Node
-    joint_state_broadcaster_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
-    )
-
-
-    # Joint Velocity Controller Node
-    robot_velocity_controller_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["joint_velocity_controller", "--controller-manager", "/controller_manager"],
-    )
-
-    # Joint Position Controller Node
-    robot_position_controller_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["joint_position_controller", "--controller-manager", "/controller_manager"],
-    )
-
-    # Delay start of robot_controller after `joint_state_broadcaster`
-    delay_robot_postion_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
-        event_handler=OnProcessExit(
-            target_action=joint_state_broadcaster_spawner,
-            on_exit=[robot_position_controller_spawner],
-        )
-    )
-
-    # Delay start of robot_controller after `joint_state_broadcaster`
-    delay_robot_velocity_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
-        event_handler=OnProcessExit(
-            target_action=joint_state_broadcaster_spawner,
-            on_exit=[robot_velocity_controller_spawner],
-        )
-    )
-
     # Static TF Transform
     tf=Node(
         package='tf2_ros',
@@ -152,9 +114,6 @@ def generate_launch_description():
             joint_state_publisher_node,
             robot_state_publisher,
             spawn_robot,
-            joint_state_broadcaster_spawner,
-            delay_robot_postion_controller_spawner_after_joint_state_broadcaster_spawner,
-            delay_robot_velocity_controller_spawner_after_joint_state_broadcaster_spawner,
             tf
         ]
     )
