@@ -254,6 +254,7 @@ Package xml
 A few more changes have to be made to package.xml file
 
 .. code-block:: xml
+    :emphasize-lines: 2-7,13
 
     <buildtool_depend>ament_cmake</buildtool_depend>
 
