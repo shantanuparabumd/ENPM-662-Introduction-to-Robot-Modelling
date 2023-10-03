@@ -112,7 +112,7 @@ Your tag should look like below after update
 
 .. code-block:: xml
 
-    <?xml version="1.0" encoding="utf-8"?>
+    <?xml version="1.0" ?>
 
 You will also need to add the :guilabel:`xmlns:xacro="http://ros.org/wiki/xacro`` argument to your robot tag.
 
