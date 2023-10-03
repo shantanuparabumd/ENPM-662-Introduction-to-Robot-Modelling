@@ -116,7 +116,7 @@ Your tag should look like below after update
 
 You will also need to add the :guilabel:`xmlns:xacro="http://ros.org/wiki/xacro`` argument to your robot tag.
 
-.. code-block::xml
+.. code-block:: xml
 
     <robot name="robot_name" xmlns:xacro="http://ros.org/wiki/xacro">
 
@@ -288,8 +288,8 @@ We can make use of the OGRE color format to make the colors visible in Gazebo
     <xacro:macro name="body_color">
         <visual>
         <material>
-            <ambient>0.250980392156863 0.250980392156863 0.250980392156863 1</ambient>
-            <diffuse>0.250980392156863 0.250980392156863 0.250980392156863 1</diffuse>
+            <ambient>0.8 0.558823529411765 0.1 1</ambient>
+            <diffuse>0.8 0.558823529411765 0.1 1</diffuse>
             <specular>0.1 0.1 0.1 1</specular>
             <emissive>0 0 0 0</emissive>
         </material>
