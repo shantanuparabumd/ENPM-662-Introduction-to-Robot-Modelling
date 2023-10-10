@@ -99,10 +99,10 @@ You may edit the control.yaml file as follows to add controller description.
             use_sim_time: true
 
             position_controller:
-            type: position_controllers/JointGroupPositionController
+                type: position_controllers/JointGroupPositionController
 
             joint_state_broadcaster:
-            type: joint_state_broadcaster/JointStateBroadcaster
+                type: joint_state_broadcaster/JointStateBroadcaster
 
             velocity_controller:
                 type: velocity_controllers/JointGroupVelocityController
