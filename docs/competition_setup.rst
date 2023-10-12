@@ -55,7 +55,7 @@ Note the orientation given in the below code snippet is a ideal location for rob
 
 .. code-block:: python
     :emphasize-lines: 5,7
-
+    
     package_description = "windmill"
 
     # Position and orientation
@@ -70,6 +70,6 @@ You can now build your package and launch the competiton using.
 
     ros2 launch package_name competition.launch.py
 
-.. image:: images/competition spawn.png
-  :width: 700
+.. image:: images/competition_spwan.png
+  :width: 800
   :alt: After completing the setup
