@@ -43,7 +43,7 @@ running the below command.
 
 .. code-block:: bash
 
-    svn export https://github.com/shantanuparabumd/ENPM-662-Introduction-to-Robot-Modelling.git/trunk/templates/template4/competition.launch
+    svn export https://github.com/shantanuparabumd/ENPM-662-Introduction-to-Robot-Modelling.git/trunk/templates/template4/competition.launch.py
 
 
 Make sure you change the `package_name` to name of your package whereever required.
