@@ -49,3 +49,27 @@ running the below command.
 Make sure you change the `package_name` to name of your package whereever required.
 
 Also,change the spawn location and orientation of your robot such that the robot is spawned on the track.
+These changes can be made in the `spawn_robot_ros2.launch.py` file. 
+Note the orientation given in the below code snippet is a ideal location for robot spawnining you have to change it.
+
+
+.. code-block:: python
+    :emphasize-lines: 5,7
+
+    package_description = "windmill"
+
+    # Position and orientation
+    # [X, Y, Z]
+    position = [5.0, 5.0, 1.0]
+    # [Roll, Pitch, Yaw]
+    orientation = [0.0, 0.0, 0.0]
+
+You can now build your package and launch the competiton using.
+
+.. code-block:: bash
+
+    ros2 launch package_name competition.launch.py
+
+.. image:: images/competition spawn.png
+  :width: 700
+  :alt: After completing the setup
