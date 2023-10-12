@@ -19,6 +19,7 @@ Project 1 Documentation
    add_control
    rviz
    plugin
+   competition_setup
    script
    faq
    support
