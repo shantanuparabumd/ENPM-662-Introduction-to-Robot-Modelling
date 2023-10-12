@@ -16,10 +16,10 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
     
     ####### DATA INPUT ##########
-    urdf_file = 'robotaxi.urdf'
-    xacro_file = "robotaxi.urdf.xacro"
+    urdf_file = 'urdf_name.urdf'
+    xacro_file = "urdf_name.urdf.xacro"
     #xacro_file = "box_bot.xacro"
-    package_description = "project_legion"
+    package_description = "package_name"
     use_urdf = False
     # Position and orientation
     # [X, Y, Z]
@@ -27,14 +27,14 @@ def generate_launch_description():
     # [Roll, Pitch, Yaw]
     orientation = [0.0, 0.0, 0.0]
     # Base Name or robot
-    robot_base_name = "robotaxi"
+    robot_base_name = "urdf_name"
     ####### DATA INPUT END ##########
     pkg_share = launch_ros.substitutions.FindPackageShare(package=package_description).find(package_description)
 
     # default_rviz_config_path = os.path.join(pkg_share, 'rviz/display_default.rviz')
 
     default_rviz_config_path = PathJoinSubstitution(
-        [FindPackageShare("project_legion"), "rviz", "display_default.rviz"]
+        [FindPackageShare("package_name"), "rviz", "display_default.rviz"]
     )
 
     if use_urdf:
@@ -57,7 +57,7 @@ def generate_launch_description():
     
     # RVIZ Configuration
     rviz_config_dir = PathJoinSubstitution(
-        [FindPackageShare("project_legion"), "rviz", "display_default.rviz"]
+        [FindPackageShare("package_name"), "rviz", "display_default.rviz"]
     )
 
     rviz_node = Node(
@@ -70,7 +70,7 @@ def generate_launch_description():
     
     # Publish Robot Desciption in String form in the topic /robot_description
     publish_robot_description = Node(
-        package='project_legion',
+        package='package_name',
         executable='robot_description_publisher.py',
         name='robot_description_publisher',
         output='screen',

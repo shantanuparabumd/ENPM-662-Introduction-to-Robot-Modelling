@@ -37,14 +37,14 @@ def generate_launch_description():
     )
 
     # Get the package directory 
-    pkg_robotaxi_gazebo = get_package_share_directory('package_name')
+    pkg_gazebo = get_package_share_directory('package_name')
 
    
 
     # Launch Decription to Spawn Robot Model 
     spawn_robot_world = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_robotaxi_gazebo, 'launch',
+            os.path.join(pkg_gazebo, 'launch',
                          'spawn_robot_ros2.launch.py'),
         )
     )

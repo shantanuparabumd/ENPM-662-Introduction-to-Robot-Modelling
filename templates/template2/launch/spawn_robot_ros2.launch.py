@@ -17,9 +17,9 @@ import random
 def generate_launch_description():
 
     ####### DATA INPUT ##########
-    xacro_file = "robotaxi.urdf.xacro"
+    xacro_file = "urdf_name.urdf.xacro"
 
-    package_description = "project_legion"
+    package_description = "package_name"
 
     # Position and orientation
     # [X, Y, Z]
@@ -27,7 +27,7 @@ def generate_launch_description():
     # [Roll, Pitch, Yaw]
     orientation = [0.0, 0.0, 0.0]
     # Base Name or robot
-    robot_base_name = "robotaxi"
+    robot_base_name = "urdf_name"
     ####### DATA INPUT END ##########
 
     # Path to robot model XACRO File
@@ -64,7 +64,7 @@ def generate_launch_description():
 
     # Publish Robot Desciption in String form in the topic /robot_description
     publish_robot_description = Node(
-        package='project_legion',
+        package='package_name',
         executable='robot_description_publisher.py',
         name='robot_description_publisher',
         output='screen',

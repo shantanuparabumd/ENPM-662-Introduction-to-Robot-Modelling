@@ -19,7 +19,7 @@ def generate_launch_description():
 
     # Get the location for empty world
     world = os.path.join(
-        get_package_share_directory('project_legion'),
+        get_package_share_directory('package_name'),
         'worlds',
         'empty_world.world'
     )
@@ -40,21 +40,21 @@ def generate_launch_description():
     )
 
     # Get the package directory 
-    pkg_robotaxi_gazebo = get_package_share_directory('project_legion')
+    pkg_gazebo = get_package_share_directory('package_name')
 
    
 
     # Launch Decription to Spawn Robot Model 
     spawn_robot_world = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_robotaxi_gazebo, 'launch',
+            os.path.join(pkg_gazebo, 'launch',
                          'spawn_robot_ros2.launch.py'),
         )
     )
 
      # RVIZ Configuration
     rviz_config_dir = PathJoinSubstitution(
-        [FindPackageShare("project_legion"), "rviz", "display_default.rviz"]
+        [FindPackageShare("package_name"), "rviz", "display_default.rviz"]
     )
 
     rviz_node = Node(
