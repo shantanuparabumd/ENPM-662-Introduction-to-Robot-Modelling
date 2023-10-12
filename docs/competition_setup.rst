@@ -11,7 +11,7 @@ In your root folder download the competiton folder using the given command.
 
 
 
-Add the competition folder to your CMakeLists.txt file 
+Add the competition folder to your :guilabel:`CMakeLists.txt` file 
 
 
 .. code-block:: cmake
@@ -38,7 +38,7 @@ Gazebo models location.
     cp -r arena/ ~/.gazebo/models
 
 
-Download the competition.launch file to your launch folder by moving into the launch folder and 
+Download the :guilabel:`competition.launch.py` file to your launch folder by moving into the launch folder and 
 running the below command.
 
 .. code-block:: bash
@@ -46,16 +46,16 @@ running the below command.
     svn export https://github.com/shantanuparabumd/ENPM-662-Introduction-to-Robot-Modelling.git/trunk/templates/template4/competition.launch.py
 
 
-Make sure you change the `package_name` to name of your package whereever required.
+Make sure you change the :guilabel:`package_name` to name of your package whereever required.
 
 Also,change the spawn location and orientation of your robot such that the robot is spawned on the track.
-These changes can be made in the `spawn_robot_ros2.launch.py` file. 
+These changes can be made in the :guilabel:`spawn_robot_ros2.launch.py` file. 
 Note the orientation given in the below code snippet is a ideal location for robot spawnining you have to change it.
 
 
 .. code-block:: python
     :emphasize-lines: 5,7
-    
+
     package_description = "windmill"
 
     # Position and orientation
