@@ -24,6 +24,20 @@ We move to the root of our package and then run the code below to download the t
 
     svn export https://github.com/shantanuparabumd/ENPM-662-Introduction-to-Robot-Modelling.git/trunk/templates/template2/launch
 
+So that the robot can move in the RVIZ environment we add a :guilabel::`dummy_link` to our robot. This is
+simply done by adding a link and a joint to :guilabel::`robot_name.urdf.xacro` file as follows.
+
+.. code-block:: xml
+
+    # Add this before base link
+    <link name="dummy_link"></link>
+
+    # Add this after base link
+    <joint name="dummy_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="dummy_link"/>
+        <child link="base_link"/>
+    </joint>
 
 File Description:
 
@@ -31,7 +45,20 @@ File Description:
     * The :guilabel:`display.launch.py` will launch RVIZ 2 along with the neccessary setup for the Robot Visualization.
     * The :guilabel:`debug.launch.py` will launch both Gazebo and RVIZ 2 together.
 
-Use any of the abouve launch files as required.
+Use any of the above launch files as required.
+
+Once RVIZ is launched Add the robot model to the tree.
+
+If the robot is not visible add the topic :guilabel::`/robot_description` to the :guilabel::`Description Topic` argument.
+
+.. image:: images/robot_description.png
+  :width: 700
+  :alt: Robot Description Topic
 
 
 
+Select :guilabel::`dummy_link` in the :guilabel::`Fixed Frame` argument.
+
+.. image:: images/global frame.png
+  :width: 700
+  :alt: Robot Description Topic
