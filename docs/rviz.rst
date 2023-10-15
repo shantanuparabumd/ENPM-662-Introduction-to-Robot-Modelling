@@ -24,8 +24,8 @@ We move to the root of our package and then run the code below to download the t
 
     svn export https://github.com/shantanuparabumd/ENPM-662-Introduction-to-Robot-Modelling.git/trunk/templates/template2/launch
 
-So that the robot can move in the RVIZ environment we add a :guilabel::`dummy_link` to our robot. This is
-simply done by adding a link and a joint to :guilabel::`robot_name.urdf.xacro` file as follows.
+So that the robot can move in the RVIZ environment we add a :guilabel:`dummy_link` to our robot. This is
+simply done by adding a link and a joint to :guilabel:`robot_name.urdf.xacro` file as follows.
 
 .. code-block:: xml
 
@@ -49,7 +49,7 @@ Use any of the above launch files as required.
 
 Once RVIZ is launched Add the robot model to the tree.
 
-If the robot is not visible add the topic :guilabel::`/robot_description` to the :guilabel::`Description Topic` argument.
+If the robot is not visible add the topic :guilabel:`/robot_description` to the :guilabel:`Description Topic` argument.
 
 .. image:: images/robot_description.png
   :width: 700
@@ -57,8 +57,8 @@ If the robot is not visible add the topic :guilabel::`/robot_description` to the
 
 
 
-Select :guilabel::`dummy_link` in the :guilabel::`Fixed Frame` argument.
+Select :guilabel:`dummy_link` in the :guilabel:`Fixed Frame` argument.
 
-.. image:: images/global frame.png
+.. image:: images/global_frame.png
   :width: 700
   :alt: Robot Description Topic
