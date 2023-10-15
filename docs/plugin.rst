@@ -83,6 +83,7 @@ to the robot.
 
 
 Add the folowing line to :guilabel:`robot_name.urdf.xacro` file. Make sure you edit the highlighted lines.
+
 .. code:: xml
   :emphasize-lines: 1,10,15
 
