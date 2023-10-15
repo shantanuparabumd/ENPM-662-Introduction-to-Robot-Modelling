@@ -106,14 +106,14 @@ def generate_launch_description():
     robot_velocity_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["joint_velocity_controller", "--controller-manager", "/controller_manager"],
+        arguments=["velocity_controller", "--controller-manager", "/controller_manager"],
     )
 
     # Joint Position Controller Node
     robot_position_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["joint_position_controller", "--controller-manager", "/controller_manager"],
+        arguments=["position_controller", "--controller-manager", "/controller_manager"],
     )
 
     # Delay start of robot_controller after `joint_state_broadcaster`
