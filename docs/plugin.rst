@@ -84,7 +84,7 @@ to the robot.
 
 Add the folowing line to :guilabel:`robot_name.urdf.xacro` file. Make sure you edit the highlighted lines.
 
-.. code:: xml
+.. code-block:: xml
     :emphasize-lines: 1,10,15
 
     <gazebo reference="name_of_the_base_link">
