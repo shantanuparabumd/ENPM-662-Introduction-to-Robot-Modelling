@@ -86,6 +86,20 @@ In the root of the package create a folder config.
         cd config
         touch control.yaml
 
+Add this folder to the :guilabel::`CMakeLists.txt` file.
+
+.. code-block:: cmake
+    :emphasize-lines: 6
+
+    install(DIRECTORY
+        urdf
+        meshes
+        launch
+        worlds
+        config
+        DESTINATION share/${PROJECT_NAME}/
+        )
+
 
 You may edit the control.yaml file as follows to add controller description.
 
