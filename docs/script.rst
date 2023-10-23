@@ -28,7 +28,7 @@ Use the following Python Code as reference to control your robot.
         def __init__(self):
             super().__init__('keyboard_control_node')
 
-            self.joint_position_pub = self.create_publisher(Float64MultiArray, '/joint_position_controller/commands', 10)
+            self.joint_position_pub = self.create_publisher(Float64MultiArray, '/position_controller/commands', 10)
             self.wheel_velocities_pub = self.create_publisher(Float64MultiArray, '/velocity_controller/commands', 10)
             self.joint_state_pub = self.create_publisher(JointState, '/joint_states', 10)
 
