@@ -107,44 +107,44 @@ You may edit the control.yaml file as follows to add controller description.
 .. code-block:: xml
 
         controller_manager:
-        ros__parameters:
-            update_rate: 1000  # Hz
+            ros__parameters:
+                update_rate: 1000  # Hz
 
-            use_sim_time: true
+                use_sim_time: true
 
-            position_controller:
-                type: position_controllers/JointGroupPositionController
+                position_controller:
+                    type: position_controllers/JointGroupPositionController
 
-            joint_state_broadcaster:
-                type: joint_state_broadcaster/JointStateBroadcaster
+                joint_state_broadcaster:
+                    type: joint_state_broadcaster/JointStateBroadcaster
 
-            velocity_controller:
-                type: velocity_controllers/JointGroupVelocityController
+                velocity_controller:
+                    type: velocity_controllers/JointGroupVelocityController
 
 
 
         position_controller:
-        ros__parameters:
-            joints:
-            - front_left_axel_joint
-            interface_name: position
-            command_interfaces:
-            - position
-            state_interfaces:
-            - position
-            - velocity
+            ros__parameters:
+                joints:
+                    - front_left_axel_joint
+                interface_name: position
+                command_interfaces:
+                    - position
+                state_interfaces:
+                    - position
+                    - velocity
 
 
         velocity_controller:
-        ros__parameters:
-            joints:
-            - front_left_wheel_joint
-            interface_name: velocity
-            command_interfaces:
-            - velocity
-            state_interfaces:
-            - position
-            - velocity
+            ros__parameters:
+                joints:
+                    - front_left_wheel_joint
+                interface_name: velocity
+                command_interfaces:
+                    - velocity
+                state_interfaces:
+                    - position
+                    - velocity
 
 
 You may now build and Overlay your package
