@@ -10,7 +10,8 @@ Frequently Faced Errors
 If you face a error like above. You will need to install the xacro package. This can be done using the following commands.
 
 .. code-block:: bash
-    sudo apt install ros-galactic-xacro
+
+      sudo apt install ros-galactic-xacro
 
 
 2. ROS Controller Manager Not Found
@@ -23,4 +24,5 @@ If you face a error like above. You will need to install the xacro package. This
 If you are facing errors like above. You will need to install the controller manager explicitly. Use the below command.
 
 .. code-block:: bash
-    sudo apt-get install ros-galactic-controller-manager
+
+      sudo apt-get install ros-galactic-controller-manager
