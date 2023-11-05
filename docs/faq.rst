@@ -67,3 +67,31 @@ The correct representation of axes should be in the form of whole numbers, as ex
 
 To resolve this issue, you will need to reconstruct your URDF by exporting the Solidworks Assembly once again. Please consult the software sessions for guidance on how to assign reference axes to the joints. Utilizing reference joints will rectify the problems associated with incorrect joint definitions, ensuring a error-free experience in RViz.
 
+
+3. Subscribing to IMU Sensor data
+-----------------------------------------------------------------
+
+You have to manually change your QOS profile in your script.
+
+To do so:
+
+Add:
+
+.. code-block:: python
+
+        from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
+
+
+Then, in your init function add:
+
+.. code-block:: python
+
+          qos_profile = QoSProfile(
+            reliability=ReliabilityPolicy.BEST_EFFORT,
+            history=HistoryPolicy.KEEP_LAST,
+            depth=10
+            )
+
+
+Then, in your publisher, instead of queue size = 10, replace the argument in create_subscription with qos_profile:
+self.imu_sub = self.create_subscription(Imu, 'imu_plugin/out', self.imu_callback, qos_profile) #Subscribe to the 'imu_plugin/out' topic
