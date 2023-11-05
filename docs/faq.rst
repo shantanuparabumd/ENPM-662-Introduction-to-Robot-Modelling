@@ -51,7 +51,7 @@ If you're encountering issues where your robot spawns correctly in Gazebo but yo
         <axis
           xyz="0.0000123 0.998289 0"/>
 
-.. image:: images/link error 2.png
+.. image:: images/link_error_2.png
   :width: 700
   :alt: Incorrect Axis representation
 
