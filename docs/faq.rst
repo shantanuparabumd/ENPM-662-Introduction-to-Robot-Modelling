@@ -23,6 +23,44 @@ If you face a error like above. You will need to install the xacro package. This
 
 If you are facing errors like above. You will need to install the controller manager explicitly. Use the below command.
 
+
+.. code-block:: cmake
+
+        sudo apt-get install ros-galactic-controller-manager
+
 .. code-block:: bash
 
       sudo apt-get install ros-galactic-controller-manager
+
+3. Transform Not Available
+
+
+.. image:: images/link_error_1.png
+  :width: 700
+  :alt: RViz Errors
+
+If you're encountering issues where your robot spawns correctly in Gazebo but you're getting errors in RViz, particularly related to missing link transforms, it's possible that the problem stems from inaccuracies in the axis definitions for the link joints within your URDF file.
+
+
+.. code-block:: xml
+
+        # The axis might be either completely 0
+        <axis
+          xyz="0 0 0"/>
+        # The axis might have fractions
+        <axis
+          xyz="0.0000123 0.998289 0"/>
+
+.. image:: images/link error 2.png
+  :width: 700
+  :alt: Incorrect Axis representation
+
+The correct representation of axes should be in the form of whole numbers, as exemplified below.
+
+.. image:: images/link_error_3.png
+  :width: 700
+  :alt: Correct Axis representation
+
+
+To resolve this issue, you will need to reconstruct your URDF by exporting the Solidworks Assembly once again. Please consult the software sessions for guidance on how to assign reference axes to the joints. Utilizing reference joints will rectify the problems associated with incorrect joint definitions, ensuring a error-free experience in RViz.
+
