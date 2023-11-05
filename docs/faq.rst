@@ -2,6 +2,7 @@ Frequently Faced Errors
 ================================================================================================
 
 1. Xacro Package is Not Installed
+-----------------------------------------------------------------
 
 .. image:: images/xacro_error.png
   :width: 700
@@ -15,6 +16,7 @@ If you face a error like above. You will need to install the xacro package. This
 
 
 2. ROS Controller Manager Not Found
+-----------------------------------------------------------------
 
 
 .. image:: images/ros_controller_manager.png
@@ -33,6 +35,7 @@ If you are facing errors like above. You will need to install the controller man
       sudo apt-get install ros-galactic-controller-manager
 
 3. Transform Not Available
+-----------------------------------------------------------------
 
 
 .. image:: images/link_error_1.png
