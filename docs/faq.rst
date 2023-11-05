@@ -70,6 +70,11 @@ To resolve this issue, you will need to reconstruct your URDF by exporting the S
 
 3. Subscribing to IMU Sensor data
 -----------------------------------------------------------------
+Error
+
+.. code-block:: bash
+      [WARN] [1698900148.627976887] [minimal_subscriber]: New publisher discovered on topic 'imu_plugin/out', offering incompatible QoS. No messages will be received from it. Last incompatible policy: RELIABILITY
+
 
 You have to manually change your QOS profile in your script.
 
