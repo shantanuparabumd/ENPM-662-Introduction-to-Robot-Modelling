@@ -68,7 +68,7 @@ The correct representation of axes should be in the form of whole numbers, as ex
 To resolve this issue, you will need to reconstruct your URDF by exporting the Solidworks Assembly once again. Please consult the software sessions for guidance on how to assign reference axes to the joints. Utilizing reference joints will rectify the problems associated with incorrect joint definitions, ensuring a error-free experience in RViz.
 
 
-3. Subscribing to IMU Sensor data
+4. Subscribing to IMU Sensor data
 -----------------------------------------------------------------
 Error
 
