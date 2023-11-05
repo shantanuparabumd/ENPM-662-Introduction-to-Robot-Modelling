@@ -25,11 +25,6 @@ If you face a error like above. You will need to install the xacro package. This
 
 If you are facing errors like above. You will need to install the controller manager explicitly. Use the below command.
 
-
-.. code-block:: cmake
-
-        sudo apt-get install ros-galactic-controller-manager
-
 .. code-block:: bash
 
       sudo apt-get install ros-galactic-controller-manager
