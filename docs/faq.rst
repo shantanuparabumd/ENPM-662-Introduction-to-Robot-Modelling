@@ -99,4 +99,9 @@ Then, in your init function add:
 
 
 Then, in your publisher, instead of queue size = 10, replace the argument in create_subscription with qos_profile:
-self.imu_sub = self.create_subscription(Imu, 'imu_plugin/out', self.imu_callback, qos_profile) #Subscribe to the 'imu_plugin/out' topic
+
+.. code-block:: python
+  
+  #Subscribe to the 'imu_plugin/out' topic
+  self.imu_sub = self.create_subscription(Imu, 'imu_plugin/out', self.imu_callback, qos_profile) 
+  
