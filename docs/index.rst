@@ -21,6 +21,7 @@ Project 1 Documentation
    plugin
    competition_setup
    script
+   custom_objects
    world
    faq
    support
