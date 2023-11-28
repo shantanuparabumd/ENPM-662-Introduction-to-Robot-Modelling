@@ -113,15 +113,14 @@ Use the information provided in this topic as a feedback for you robot.
 
   
 
-IMU
+Vacuum Gripper
 ---------------------------------
 
-In order to implememt the closed loop controller we need a feedback from our robot. This feedback will be
-the orientation of the robot. To get the orientation of the robot we will be adding an IMU sensor
-to the robot.
+To add a Vacuum Gripper to your robot manipulator, you can use the similar approach used for adding the 
+plugins to your robot.
+This plugin is provided to us by :guilabel:`gazebo_plugins` so make sure you have the  package installed.
 
-
-Add the folowing line to :guilabel:`robot_name.urdf.xacro` file. Make sure you edit the highlighted lines.
+Add the folowing line to :guilabel:`robot_name.urdf.xacro` file. 
 
 .. code-block:: xml
 
@@ -173,3 +172,59 @@ Use the below command to get the switch off the gripper
 
     ros2 service call /vacuum_gripper/switch std_srvs/srv/SetBool data:\ false
 
+
+
+Odometry 
+---------------------------------
+
+We use the odometry plugin to get the position and velocity of a link with respect to the stationary world frame.
+Once you add the plugin you will have two topics available :guilabel:`\odom` and :guilabel:`\velocity`. 
+The :guilabel:`\odom` topic will have the pose and orientation of the link.
+The :guilabel:`\velocity` topic will have the linear and angular velocities of the link.
+
+This plugin is provided to us by :guilabel:`odometry` package so make sure you have the  package installed.
+
+**Package Installation Guide lines:**
+
+1. Move to :guilabel:`~/workspace/src`
+2. Run the below command to download the :guilabel:`odometry` package.
+
+.. code-block:: bash
+
+  svn export https://github.com/shantanuparabumd/ENPM-662-Introduction-to-Robot-Modelling.git/trunk/templates/plugin/odometry
+
+3. Build the workspace and source.
+
+
+**Plugin Usage Guideline:**
+
+Add the folowing line to :guilabel:`robot_name.urdf.xacro` file. 
+
+.. code-block:: xml
+
+    <gazebo>
+      <plugin filename="libodometry_plugin.so" name="odometry_plugin">
+        <!-- Name of the link for which the odometry is required -->
+        <frame>blade_link</frame>
+        <!-- Any arbitray name for the world frame -->
+        <world_frame>fixed_world</world_frame>
+      </plugin>
+    </gazebo>
+
+Build and Run the project and you should be able to see :guilabel:`\odom`  and :guilabel:`\velocity ` service in the topic list.
+
+Use the below command to get the service list
+
+.. code-block:: bash
+
+    ros2 topic list
+
+Use the below command to echo the topic and also can write a subscriber to get the topic data
+
+.. code-block:: bash
+
+    ros2 topic echo /odom
+
+.. code-block:: bash
+
+    ros2 topic echo /velocity
