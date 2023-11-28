@@ -10,9 +10,9 @@ Use the below tutorial to understand how to create a world using gazebo
 Your world will be saved in a :guilabel:`SDF`` format like :guilabel:`test_world.sdf`. You can rename the world file to
 :guilabel:`test_world.world`.
 
-Add this file to the wordls folder in your project package.
+Add this file to the :guilabel:`wordls`` folder in your project package.
 
-Make sure the world folder is added to :guilabel:`CMakeLists.txt``
+Make sure the worlds folder is added to :guilabel:`CMakeLists.txt``
 
 .. code-block:: cmake
     :emphasize-lines: 5
