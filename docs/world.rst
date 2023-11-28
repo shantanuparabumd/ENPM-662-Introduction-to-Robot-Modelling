@@ -7,12 +7,12 @@ Use the below tutorial to understand how to create a world using gazebo
 `Gazebo Tutorial <https://classic.gazebosim.org/tutorials?tut=build_world&ver=1.9#LoadingaWorld>`_
 
 
-Your world will be saved in a SDF format like test_world.sdf. You can rename the world file to
-test_world.world.
+Your world will be saved in a :guilabel:`SDF`` format like :guilabel:`test_world.sdf`. You can rename the world file to
+:guilabel:`test_world.world`.
 
 Add this file to the wordls folder in your project package.
 
-Make sure the world folder is added to CMakeLists.txt
+Make sure the world folder is added to :guilabel:`CMakeLists.txt``
 
 .. code-block:: cmake
     :emphasize-lines: 5
@@ -29,7 +29,8 @@ Make sure the world folder is added to CMakeLists.txt
 
 
 
-Now for your robot to spawn in the new world edit the gazebo.launch.pu file 
+Now for your robot to spawn in the new world edit the :guilabel:`gazebo.launch.py`` file.
+Change the line in below code with name of your world file.
 
 .. code-block:: python
     :emphasize-lines: 5
