@@ -60,7 +60,7 @@ Your final folder structure will be as follow
 
 .. code-block:: bash
 
-    -- model
+    -- model(your_folder_name)
         -- meshes
         -- model.config
         -- model.sdf
@@ -75,7 +75,7 @@ Use the below line of code for reference.
 
         <mesh>
             <scale>1 1 1</scale>
-            <uri>model://folder_name/meshes/part_name.STL</uri>
+            <uri>model://your_folder_name/meshes/part_name.STL</uri>
         </mesh>
 
 6. Add the model to Gazebo models.
@@ -85,7 +85,7 @@ Gazebo models location.
 
 .. code-block:: bash
 
-    cp -r folder_name/ ~/.gazebo/models
+    cp -r your_folder_name/ ~/.gazebo/models
 
 
 Once you run Gazebo you should be able to see the model in the model list in Gazebo.
