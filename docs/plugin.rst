@@ -112,3 +112,64 @@ Build and Run the project and you should be able to see :guilabel:`\imu` topic i
 Use the information provided in this topic as a feedback for you robot.
 
   
+
+IMU
+---------------------------------
+
+In order to implememt the closed loop controller we need a feedback from our robot. This feedback will be
+the orientation of the robot. To get the orientation of the robot we will be adding an IMU sensor
+to the robot.
+
+
+Add the folowing line to :guilabel:`robot_name.urdf.xacro` file. Make sure you edit the highlighted lines.
+
+.. code-block:: xml
+
+    <gazebo>
+      <plugin name='vacuum_gripper' filename='libgazebo_ros_vacuum_gripper.so'>
+
+        <!-- This part can be commented out if not required -->
+        <ros>
+
+          <!-- Add a namespace -->
+          
+          <namespace>/demo</namespace>
+
+          <!-- Remapping service and topic names -->
+          <remapping>switch:=custom_switch</remapping>
+          <remapping>grasping:=custom_grasping</remapping>
+        </ros>
+
+        <!-- Link associated with gripper -->
+        <link_name>link</link_name>
+
+        <!-- Max distance to attract entities -->
+        <max_distance>10.0</max_distance>
+
+        <!-- List of entities to be not attracted by the gripper -->
+        <fixed>ground_plane</fixed>
+        <fixed>wall</fixed>
+
+      </plugin>
+    </gazebo>
+
+Build and Run the project and you should be able to see :guilabel:`\namespace\switch` service in the service  list.
+
+Use the below command to get the service list
+
+.. code-block:: bash
+
+    ros2 service list
+
+Use the below command to get the switch on the gripper
+
+.. code-block:: bash
+
+    ros2 service call /vacuum_gripper/switch std_srvs/srv/SetBool data:\ true
+
+Use the below command to get the switch off the gripper
+
+.. code-block:: bash
+
+    ros2 service call /vacuum_gripper/switch std_srvs/srv/SetBool data:\ false
+
