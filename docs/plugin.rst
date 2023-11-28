@@ -152,7 +152,7 @@ Add the folowing line to :guilabel:`robot_name.urdf.xacro` file.
       </plugin>
     </gazebo>
 
-Build and Run the project and you should be able to see :guilabel:`\namespace\switch` service in the service  list.
+Build and Run the project and you should be able to see :guilabel:`/namespace/switch` service in the service  list.
 
 Use the below command to get the service list
 
@@ -178,9 +178,9 @@ Odometry
 ---------------------------------
 
 We use the odometry plugin to get the position and velocity of a link with respect to the stationary world frame.
-Once you add the plugin you will have two topics available :guilabel:`\odom` and :guilabel:`\velocity`. 
-The :guilabel:`\odom` topic will have the pose and orientation of the link.
-The :guilabel:`\velocity` topic will have the linear and angular velocities of the link.
+Once you add the plugin you will have two topics available :guilabel:`/odom` and :guilabel:`/velocity`. 
+The :guilabel:`/odom` topic will have the pose and orientation of the link.
+The :guilabel:`/velocity` topic will have the linear and angular velocities of the link.
 
 This plugin is provided to us by :guilabel:`odometry` package so make sure you have the  package installed.
 
@@ -211,7 +211,7 @@ Add the folowing line to :guilabel:`robot_name.urdf.xacro` file.
       </plugin>
     </gazebo>
 
-Build and Run the project and you should be able to see :guilabel:`\odom`  and :guilabel:`\velocity ` service in the topic list.
+Build and Run the project and you should be able to see :guilabel:`/odom`  and :guilabel:`/velocity ` service in the topic list.
 
 Use the below command to get the service list
 
