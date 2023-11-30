@@ -289,7 +289,7 @@ Torque = rotorTorqueCoeff * motor_speed
 
 
 
-Build and Run the project and you should be able to see :guilabel:`/motor_speed` ,:guilabel:`/drone_pose`  and :guilabel:`/drone_velocity ` service in the topic list.
+Build and Run the project and you should be able to see :guilabel:`/motor_speed` , :guilabel:`/drone_pose`  and :guilabel:`/drone_velocity ` service in the topic list.
 
 Use the below command to get the topic list
 
