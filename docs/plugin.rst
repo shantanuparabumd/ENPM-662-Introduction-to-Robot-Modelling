@@ -228,3 +228,138 @@ Use the below command to echo the topic and also can write a subscriber to get t
 .. code-block:: bash
 
     ros2 topic echo /velocity
+
+
+
+Drone Plugin 
+---------------------------------
+
+.. note::
+
+  * The plugin does not ensure a perfect flight and you will need to write a PID control loop.
+  * Tuning will be required for Thrust and Torque for links to move.
+  * These depend upon the weight of each link and the robot.
+
+
+As many of you are trying to implement the drones in your project. Here is a plugin that will help you ease up things.
+Once you add the plugin you will have two topics available for subscription :guilabel:`/drone_pose` and :guilabel:`/drone_velocity`. 
+And one topic for publishing the motor speeds :guilabel:`/motor_speed` The :guilabel:`/odom` topic will have the pose and orientation of the link.
+The :guilabel:`/velocity` topic will have the linear and angular velocities of the link.
+
+This plugin is provided to us by :guilabel:`drone_plugin` package so make sure you have the  package installed.
+
+**Package Installation Guide lines:**
+
+1. Move to :guilabel:`~/workspace/src`
+2. Run the below command to download the :guilabel:`drone_plugin` package.
+
+.. code-block:: bash
+
+  svn export https://github.com/shantanuparabumd/ENPM-662-Introduction-to-Robot-Modelling.git/trunk/templates/plugin/drone_plugin
+
+3. Build the workspace and source.
+
+
+**Plugin Usage Guideline:**
+
+Add the folowing line to :guilabel:`robot_name.urdf.xacro` file. 
+
+.. code-block:: xml
+
+    <gazebo>
+      <plugin name="drone_plugin" filename="libdrone.so">
+      <!-- Name of the base/body link of the drone to compute odometry -->
+        <drone_frame>base_link</drone_frame>
+        <updateRate>100</updateRate>
+        <!-- Keep this true if you want to visualize transforms for RViz -->
+        <publishTf>true</publishTf>
+        <!-- Adjust the coefficient according to need -->
+        
+        <rotorThrustCoeff>0.00025</rotorThrustCoeff>
+        <rotorTorqueCoeff>0.0000074</rotorTorqueCoeff>
+      </plugin>
+    </gazebo>
+
+
+The :guilabel:`rotorThrustCoeff` and :guilabel:`rotorTorqueCoeff` are critical as they decide the amount of Thrust and Torque generated as follows:
+
+Thrust = rotorThrustCoeff * motor_speed
+
+Torque = rotorTorqueCoeff * motor_speed
+
+
+
+Build and Run the project and you should be able to see :guilabel:`/motor_speed` ,:guilabel:`/drone_pose`  and :guilabel:`/drone_velocity ` service in the topic list.
+
+Use the below command to get the topic list
+
+.. code-block:: bash
+
+    ros2 topic list
+
+Use the below command to echo the topic and also can write a subscriber to get the topic data
+
+.. code-block:: bash
+
+    ros2 topic echo /drone_pose
+
+.. code-block:: bash
+
+    ros2 topic echo /drone_velocity
+
+Use the below command for publishing motor speeds.
+
+.. code-block:: bash
+
+     ros2 topic pub /motor_speed drone_plugin/msg/MotorSpeed  "{name: ['link1','link2','link3'], velocity: [5000.0,5000.0,5000.0]}"
+
+
+You can change the number of links according to robot model.
+
+
+Here is a small script to publsih to motor speed topic.
+
+.. code-block:: python
+
+  #!/usr/bin/env python3
+
+  import rclpy
+  from rclpy.node import Node
+
+  from drone_plugin.msg import MotorSpeed                            # CHANGE
+
+
+  class MinimalPublisher(Node):
+
+      def __init__(self):
+          super().__init__('minimal_publisher')
+          self.publisher_ = self.create_publisher(MotorSpeed, '/motor_speed', 10)  # CHANGE
+          timer_period = 0.5
+          self.timer = self.create_timer(timer_period, self.timer_callback)
+          self.i = 0
+
+      def timer_callback(self):
+          msg = MotorSpeed()                                                # CHANGE
+          msg.name = ['blade_link']      
+          msg.velocity = [10.0]                                       # CHANGE
+          self.publisher_.publish(msg)
+          self.get_logger().info('Publishing:')       # CHANGE
+          self.i += 1
+
+
+  def main(args=None):
+      rclpy.init(args=args)
+
+      minimal_publisher = MinimalPublisher()
+
+      rclpy.spin(minimal_publisher)
+
+      minimal_publisher.destroy_node()
+      rclpy.shutdown()
+
+
+  if __name__ == '__main__':
+      main()
+
+
+

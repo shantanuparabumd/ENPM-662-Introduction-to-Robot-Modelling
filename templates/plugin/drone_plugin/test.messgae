@@ -1,0 +1,1 @@
+ ros2 topic pub /motor_speed drone_plugin/msg/MotorSpeed  "{name: ['blade_link'], velocity: [5000.0]}"
